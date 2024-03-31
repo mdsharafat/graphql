@@ -1,26 +1,19 @@
-package com.spring.graphql.entity;
+package com.spring.graphql.model;
 
-import jakarta.persistence.*;
 import lombok.*;
 
 /*****************************************
  * @author - Md. Sharafat Hossain
  * @email - mdsharafat047@gmail.com
- * @date - 29 Mar, 2024 at 9:50 AM
+ * @date - 31 Mar, 2024 at 11:31 AM
  ******************************************
  */
-
-@Entity
-@Table(name = "project_books")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class Book {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+@Setter
+@Getter
+public class BookInput {
     private String title;
     private String desc;
     private String author;

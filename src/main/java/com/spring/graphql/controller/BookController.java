@@ -1,9 +1,11 @@
 package com.spring.graphql.controller;
 
 import com.spring.graphql.entity.Book;
+import com.spring.graphql.model.BookInput;
 import com.spring.graphql.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.graphql.data.method.annotation.Argument;
+import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -26,14 +28,24 @@ public class BookController {
     BookService bookService;
 
 //    @RequestMapping(method = RequestMethod.POST)
-    public Book create(@RequestBody Book book) {
-        return this.bookService.create(book);
+    @MutationMapping("createBook")
+    public Book create(@Argument BookInput book) {
+        Book bookEntity = Book.builder()
+                .title(book.getTitle())
+                .author(book.getAuthor())
+                .desc(book.getDesc())
+                .page(book.getPage())
+                .price(book.getPrice())
+                .build();
+        return this.bookService.create(bookEntity);
     }
 
 //    @RequestMapping(method = RequestMethod.GET)
     @QueryMapping("allBooks")
     public List<Book> getAll() {
-        return this.bookService.getAll();
+        List<Book> books = bookService.getAll();
+        return books;
+//        return this.bookService.getAll();
     }
 
 //    @RequestMapping(value = "/{bookId}", method = RequestMethod.PUT)

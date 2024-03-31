@@ -3,9 +3,21 @@ type Query {
     getSingleBook(bookId:Int):Book
 }
 
+type Mutation{
+    createBook(book:BookInput):Book
+}
+
 
 type Book {
     id:ID!
+    title:String
+    desc:String
+    author:String
+    page:Int
+    price:Float
+}
+
+input BookInput{
     title:String
     desc:String
     author:String

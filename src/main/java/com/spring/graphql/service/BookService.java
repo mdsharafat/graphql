@@ -1,6 +1,7 @@
 package com.spring.graphql.service;
 
 import com.spring.graphql.entity.Book;
+import com.spring.graphql.model.BookInput;
 
 import java.util.List;
 

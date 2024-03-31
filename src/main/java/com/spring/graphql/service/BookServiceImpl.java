@@ -1,6 +1,7 @@
 package com.spring.graphql.service;
 
 import com.spring.graphql.entity.Book;
+import com.spring.graphql.model.BookInput;
 import com.spring.graphql.repo.BookRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
